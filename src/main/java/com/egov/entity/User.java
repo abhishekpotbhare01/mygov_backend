@@ -3,21 +3,32 @@ package com.egov.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
     @Id
-    @Column(unique=true)
-    @GeneratedValue(strategy= GenerationType.AUTO)
-
+    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+    private int age;
     private String email;
     private String password;
 
-    public User(Integer userId, Integer userId1, String email, String password) {
-        this.userId = userId;
-        this.userId = userId1;
+    public User(int age, String email, String password) {
+        this.age = age;
         this.email = email;
         this.password = password;
+    }
+
+    public User() {
+
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Integer getUserId() {

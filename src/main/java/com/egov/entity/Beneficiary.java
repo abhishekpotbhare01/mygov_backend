@@ -3,23 +3,27 @@ package com.egov.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="beneficiary")
+@Table(name = "beneficiary")
 public class Beneficiary {
     @Id
-    @Column(unique=true)
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer beneficiaryId;
     private String name;
     private Integer addressId;
     private Integer age;
     private String contact;
 
-    public Beneficiary(Integer beneficiaryId, String name, Integer addressId, Integer age, String contact) {
-        this.beneficiaryId = beneficiaryId;
+    public Beneficiary(String name, Integer addressId, Integer age, String contact) {
+
         this.name = name;
         this.addressId = addressId;
         this.age = age;
         this.contact = contact;
+    }
+
+    public Beneficiary() {
+
     }
 
     public Integer getBeneficiaryId() {
@@ -60,5 +64,16 @@ public class Beneficiary {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    @Override
+    public String toString() {
+        return "Beneficiary{" +
+                "beneficiaryId=" + beneficiaryId +
+                ", name='" + name + '\'' +
+                ", addressId=" + addressId +
+                ", age=" + age +
+                ", contact='" + contact + '\'' +
+                '}';
     }
 }

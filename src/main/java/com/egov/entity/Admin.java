@@ -8,7 +8,7 @@ public class Admin {
 
     @Id
     @Column(unique=true)
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
 
     private Integer adminId;
     private String name;
@@ -18,13 +18,16 @@ public class Admin {
     private String contact;
 
 
-    public Admin(Integer adminId, String name, Designation designation, Integer addressId, Integer age, String contact) {
-        this.adminId = adminId;
+    public Admin( String name, Designation designation, Integer addressId, Integer age, String contact) {
         this.name = name;
         this.designation = designation;
         this.addressId = addressId;
         this.age = age;
         this.contact = contact;
+    }
+
+    public Admin() {
+
     }
 
     public Integer getAdminId() {
@@ -73,6 +76,18 @@ public class Admin {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminId=" + adminId +
+                ", name='" + name + '\'' +
+                ", designation=" + designation +
+                ", addressId=" + addressId +
+                ", age=" + age +
+                ", contact='" + contact + '\'' +
+                '}';
     }
 }
 

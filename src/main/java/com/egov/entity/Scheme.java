@@ -7,7 +7,7 @@ import java.util.Date;
 public class Scheme {
     @Id
     @Column(unique=true)
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
 
 
     private Integer schemeId;
@@ -16,12 +16,16 @@ public class Scheme {
     private Date launchDate;
     private AgeCatagory age;
 
-    public Scheme(Integer schemeId, String name, String schemeDescription, Date launchDate, AgeCatagory age) {
-        this.schemeId = schemeId;
+    public Scheme( String name, String schemeDescription, Date launchDate, AgeCatagory age) {
+
         this.name = name;
         this.schemeDescription = schemeDescription;
         this.launchDate = launchDate;
         this.age = age;
+    }
+
+    public Scheme() {
+
     }
 
 
