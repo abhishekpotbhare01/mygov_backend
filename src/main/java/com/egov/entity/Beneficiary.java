@@ -12,14 +12,14 @@ public class Beneficiary {
     private String name;
     private Integer addressId;
     private Integer age;
-    private String contact;
+    private String mobile;
 
     public Beneficiary(String name, Integer addressId, Integer age, String contact) {
 
         this.name = name;
         this.addressId = addressId;
         this.age = age;
-        this.contact = contact;
+        this.mobile = contact;
     }
 
     public Beneficiary() {
@@ -42,8 +42,8 @@ public class Beneficiary {
         return age;
     }
 
-    public String getContact() {
-        return contact;
+    public String getMobile() {
+        return mobile;
     }
 
     public void setBeneficiaryId(Integer beneficiaryId) {
@@ -62,8 +62,8 @@ public class Beneficiary {
         this.age = age;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setMobile(String contact) {
+        this.mobile = contact;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Beneficiary {
                 ", name='" + name + '\'' +
                 ", addressId=" + addressId +
                 ", age=" + age +
-                ", contact='" + contact + '\'' +
+                ", contact='" + mobile + '\'' +
                 '}';
     }
 }

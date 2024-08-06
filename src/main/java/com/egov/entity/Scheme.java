@@ -1,72 +1,43 @@
 package com.egov.entity;
-import jakarta.persistence.*;
 
-import java.util.Date;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
 @Entity
-@Table(name="scheme")
+@Table(name = "scheme")
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class Scheme {
     @Id
-    @Column(unique=true)
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-
-
+    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer schemeId;
     private String name;
     private String schemeDescription;
-    private Date launchDate;
+    private LocalDate launchDate;
     private AgeCatagory age;
+    private Category category;
+    private String eligibilityCriteria;
 
-    public Scheme( String name, String schemeDescription, Date launchDate, AgeCatagory age) {
+    @Column(name = "document")
+    private String docRequired;
 
+
+    public Scheme(String name, String schemeDescription, LocalDate launchDate,
+                  AgeCatagory age, Category category, String eligibilityCriteria, String docRequired) {
         this.name = name;
         this.schemeDescription = schemeDescription;
         this.launchDate = launchDate;
         this.age = age;
-    }
-
-    public Scheme() {
-
-    }
-
-
-    public Integer getSchemeId() {
-        return schemeId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSchemeDescription() {
-        return schemeDescription;
-    }
-
-    public Date getLaunchDate() {
-        return launchDate;
-    }
-
-    public AgeCatagory getAge() {
-        return age;
-    }
-
-    public void setSchemeId(Integer schemeId) {
-        this.schemeId = schemeId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSchemeDescription(String schemeDescription) {
-        this.schemeDescription = schemeDescription;
-    }
-
-    public void setLaunchDate(Date launchDate) {
-        this.launchDate = launchDate;
-    }
-
-    public void setAge(AgeCatagory age) {
-        this.age = age;
+        this.category = category;
+        this.eligibilityCriteria = eligibilityCriteria;
+        this.docRequired = docRequired;
     }
 
     @Override
