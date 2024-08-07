@@ -40,4 +40,24 @@ public class UserServiceImpl implements IUserService {
 
         return userDto;
     }
+
+    @Override
+    public User findById(Integer userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User Not found"));
+
+        return user;
+    }
+
+    @Override
+    public User saveOrUpdate(User user) {
+
+        return userRepository.save(user);
+
+    }
+
+    @Override
+    public void delete(Integer userId) {
+
+    }
 }

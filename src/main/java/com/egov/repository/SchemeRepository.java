@@ -1,9 +1,9 @@
 package com.egov.repository;
 
-import com.egov.entity.Scheme;
+import com.egov.entity.SchemeMaster;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SchemeRepository extends JpaRepository<Scheme,Integer> {
+public interface SchemeRepository extends JpaRepository<SchemeMaster,Integer> {
 
 
 }

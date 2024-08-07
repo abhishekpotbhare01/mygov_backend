@@ -11,9 +11,8 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class UserDto {
-
     private Integer userId;
     private int age;
     private String email;
@@ -22,14 +21,12 @@ public class UserDto {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public UserDto() {
 
-    }
-
-    public UserDto(int age, String email, String password, Role role) {
+    public UserDto(int age, String email, String password, String confirmPassword, Role role) {
         this.age = age;
         this.email = email;
         this.password = password;
+        this.confirmPassword = confirmPassword;
         this.role = role;
     }
 }

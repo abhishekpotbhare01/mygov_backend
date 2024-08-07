@@ -2,15 +2,16 @@ package com.egov.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class User {
     @Id
-    @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
     private int age;

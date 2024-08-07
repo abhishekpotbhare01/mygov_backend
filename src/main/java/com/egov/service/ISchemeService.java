@@ -1,8 +1,14 @@
 package com.egov.service;
 
-import com.egov.dto.SchemeDto;
+import com.egov.dto.SchemeMasterDto;
+
+import java.util.List;
 
 public interface ISchemeService {
 
-    SchemeDto saveSchemeDetails(SchemeDto schemeDto);
+    SchemeMasterDto saveSchemeDetails(SchemeMasterDto schemeDto);
+
+    SchemeMasterDto updateSchemeDetails(SchemeMasterDto schemeDto);
+    SchemeMasterDto getSchemeDetails(String schemeId);
+    List<SchemeMasterDto> getAllSchemeDetails();
 }
