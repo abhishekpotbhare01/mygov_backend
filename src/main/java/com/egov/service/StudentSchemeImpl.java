@@ -59,7 +59,11 @@ public class StudentSchemeImpl implements IStudentSchemeService {
 	public String update(Integer schemeId, StudentSchemeDto studentSchemeDto) throws Exception {
 		StudentScheme student = studentSchemeRepo.findById(schemeId).orElseThrow(() -> new Exception("Student not found"));
 		
-		modelMapper.map(studentSchemeDto, student);
+//		modelMapper.map(studentSchemeDto, student);
+		
+	    // Map DTO to entity, excluding the address
+	    modelMapper.typeMap(StudentSchemeDto.class, StudentScheme.class).map(studentSchemeDto, student);
+	    
 		StudentScheme updatedStudent = studentSchemeRepo.save(student);
 
 		if(updatedStudent.getStatus() != null) {
@@ -69,7 +73,8 @@ public class StudentSchemeImpl implements IStudentSchemeService {
 		return "Record failed to Update";
 //		return NULL;
 	}
-
+	
+	
 	@Override
 	public StudentSchemeDto get(Integer schemeId) throws Exception {
 

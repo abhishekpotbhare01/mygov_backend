@@ -31,7 +31,7 @@ public class StudentSchemeController {
 
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{studentSchemeId}")
 	public ResponseEntity<?> getStudentData(@PathVariable @Valid  Integer id) {
 		try {
 			System.out.println("in get studentschema");
@@ -43,7 +43,7 @@ public class StudentSchemeController {
 	}
 
 //	StudentSchemeDto update(String schemeId, StudentSchemeDto studentSchemeDto);
-	@PutMapping("/{id}")
+	@PutMapping("/{studentSchemeId}")
 	public ResponseEntity<?> createScheme(@PathVariable("studentSchemeId") Integer studentSchemeId,
 			@RequestBody StudentSchemeDto studentScheme) {
 		try {
@@ -54,7 +54,7 @@ public class StudentSchemeController {
 		}
 	}
 
-	@PostMapping("/{userId}/{schemaId}")
+	@PostMapping("/{userId}")
 	public ResponseEntity<?> createScheme(@PathVariable("userId") Integer userId,
 			@RequestParam("schemeId") Integer schemeId, @RequestBody StudentSchemeDto studentScheme) {
 
