@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.egov.dto.WomenDto;
-import com.egov.entity.Women;
+import com.egov.entity.WomenScheme;
 import com.egov.service.IWomenService;
 
 import jakarta.validation.Valid;
@@ -18,8 +17,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @RestController
@@ -36,7 +33,7 @@ public class WomenController {
 
   }
   @PostMapping("/addnewdata")
-  public ResponseEntity<?>addNewWomen(@RequestBody Women women){
+  public ResponseEntity<?>addNewWomen(@RequestBody WomenScheme women){
     return ResponseEntity.status(HttpStatus.CREATED).body(womenService.addNewWomenData(null));    
   }  
   @GetMapping("/{id}")

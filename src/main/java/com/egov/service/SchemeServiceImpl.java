@@ -61,13 +61,4 @@ public SchemeMasterDto updateSchemeDetails( Integer schemeId,SchemeMasterDto sch
         List<SchemeMasterDto> schemeData=modelMapper.map(schemeEntity,listType);
         return schemeData;
     }
-
-    @Override
-    public List<SchemeMasterDto> getSchemeDetailbyName(String schemeName) {
-    
-       List<SchemeMaster> schemeEntity=schemeRepository.SearchSchemebyName(schemeName);
-        Type listType = new TypeToken<List<SchemeMasterDto>>(){}.getType();
-        List<SchemeMasterDto> schemedata = modelMapper.map(schemeEntity, listType);
-       return schemedata;
-    }
 }

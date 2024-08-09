@@ -10,6 +10,6 @@ public interface ISchemeService {
 
     SchemeMasterDto updateSchemeDetails(Integer schemeId, SchemeMasterDto schemeDto);
     SchemeMasterDto getSchemeDetailsById(Integer schemeId);
-    List<SchemeMasterDto> getSchemeDetailbyName(String schemeName);
+  //  List<SchemeMasterDto> getSchemeDetailbyName(String schemeName);
     List<SchemeMasterDto> getAllSchemeDetails();
 }

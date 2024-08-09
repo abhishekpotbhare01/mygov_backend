@@ -1,7 +1,6 @@
 package com.egov.service;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -9,10 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.egov.dto.WomenDto;
-import com.egov.entity.Women;
+import com.egov.entity.WomenScheme;
 import java.lang.reflect.Type;
 
-import com.egov.repository.UserRepository;
 import com.egov.repository.WomenRepository;
 @Service
 public class WomenServiceImpl implements IWomenService {
@@ -27,7 +25,7 @@ public class WomenServiceImpl implements IWomenService {
 @Override
 public List<WomenDto> getAllWomensData() {
    
-    List<Women> womenEntities = womenrepository.findAll();
+    List<WomenScheme> womenEntities = womenrepository.findAll();
    Type listType = new TypeToken<List<WomenDto>>(){}.getType();
    List<WomenDto> womendata = modelMapper.map(womenEntities, listType);
    
@@ -41,8 +39,8 @@ public List<WomenDto> getAllWomensData() {
 public WomenDto addNewWomenData(WomenDto womenDto) {
 
 
-   Women womenentity=modelMapper.map(womenDto, Women.class);  
-    Women womensaveddata=womenrepository.save(womenentity);
+   WomenScheme womenentity=modelMapper.map(womenDto, WomenScheme.class);
+    WomenScheme womensaveddata=womenrepository.save(womenentity);
     WomenDto womendata=modelMapper.map(womensaveddata,WomenDto.class);
  return womendata;
 }
@@ -53,7 +51,7 @@ public WomenDto addNewWomenData(WomenDto womenDto) {
 @Override
 public WomenDto getWomenDataById(Integer id) {
    
-   Optional<Women> womenentity=womenrepository.findById(id);
+   Optional<WomenScheme> womenentity=womenrepository.findById(id);
 
    WomenDto womendata=modelMapper.map(womenentity,WomenDto.class);
    return womendata;
@@ -65,12 +63,10 @@ public WomenDto getWomenDataById(Integer id) {
 @Override
 public WomenDto updateWomenDataDetails(Integer id, WomenDto womenDto) {
    
-   Optional<Women> women=womenrepository.findById(id);
-   Women existingData=women.orElseThrow();
-   Women  newData=modelMapper.map(womenDto,Women.class);
-   existingData.setName(newData.getName());
+   Optional<WomenScheme> women=womenrepository.findById(id);
+   WomenScheme existingData=women.orElseThrow();
+   WomenScheme newData=modelMapper.map(womenDto, WomenScheme.class);
    existingData.setAddress(newData.getAddress());
-   existingData.setAge(newData.getAge());
    existingData.setAnnualIncome(newData.getAnnualIncome());
    existingData.setDOB(newData.getDOB());
    existingData.setMaritialStatus(newData.getMaritialStatus());
