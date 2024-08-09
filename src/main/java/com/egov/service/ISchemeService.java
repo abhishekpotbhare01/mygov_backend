@@ -8,7 +8,8 @@ public interface ISchemeService {
 
     SchemeMasterDto saveSchemeDetails(SchemeMasterDto schemeDto);
 
-    SchemeMasterDto updateSchemeDetails(SchemeMasterDto schemeDto);
-    SchemeMasterDto getSchemeDetails(String schemeId);
+    SchemeMasterDto updateSchemeDetails(Integer schemeId, SchemeMasterDto schemeDto);
+    SchemeMasterDto getSchemeDetailsById(Integer schemeId);
+    List<SchemeMasterDto> getSchemeDetailbyName(String schemeName);
     List<SchemeMasterDto> getAllSchemeDetails();
 }
