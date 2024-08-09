@@ -16,5 +16,4 @@ public class EGovBackendApplication {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
-
 }

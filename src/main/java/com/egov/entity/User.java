@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class User {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
@@ -27,7 +28,6 @@ public class User {
         this.password = password;
         this.role = role;
     }
-
 
     @Override
     public String toString() {
