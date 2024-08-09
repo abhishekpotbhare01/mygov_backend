@@ -33,7 +33,7 @@ public class StudentScheme {
     private Address address;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id",unique = false)
-    private User userId;
+    private User user;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
 }

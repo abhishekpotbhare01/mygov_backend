@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface SchemeRepository extends JpaRepository<SchemeMaster, Integer> {
 
-
-    //List<SchemeMaster> FindByName(String name);
-
+	// List<SchemeMaster> FindByName(String name);
 
 }

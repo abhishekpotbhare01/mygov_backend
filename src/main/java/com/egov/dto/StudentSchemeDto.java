@@ -21,9 +21,11 @@ public class StudentSchemeDto {
     private int studentSchemeId;
     private Student studentDetails;
     private double familyIncome;
-    private SchemeMaster schemeMaster;
-    private Address address;
-    private User userId;
+	@JsonProperty(access = Access.READ_ONLY)
+    private SchemeMasterDto schemeMaster;
+    private AddressDto address;
+	@JsonProperty(access = Access.READ_ONLY)
+    private UserDto user;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
 }
