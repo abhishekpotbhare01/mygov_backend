@@ -5,6 +5,9 @@ import com.egov.entity.SchemeMaster;
 import com.egov.entity.Status;
 import com.egov.entity.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.*;
@@ -16,6 +19,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class FarmerSchemeDto {
+	@JsonProperty(access = Access.READ_ONLY)
     private Integer farmerSchemeId;
     private String landDetails;
     private double income;

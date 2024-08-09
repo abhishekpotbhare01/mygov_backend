@@ -3,6 +3,9 @@ package com.egov.dto;
 import com.egov.entity.AgeCatagory;
 import com.egov.entity.Category;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SchemeMasterDto {
-
+	@JsonProperty(access = Access.READ_ONLY)
     private Integer schemeId;
     private String name;
     private String schemeDescription;
