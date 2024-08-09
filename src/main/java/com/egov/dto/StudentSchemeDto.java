@@ -2,6 +2,9 @@ package com.egov.dto;
 
 import com.egov.entity.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.*;
@@ -14,6 +17,7 @@ import lombok.*;
 @ToString
 @Builder
 public class StudentSchemeDto {
+	@JsonProperty(access = Access.READ_ONLY)
     private int studentSchemeId;
     private Student studentDetails;
     private double familyIncome;

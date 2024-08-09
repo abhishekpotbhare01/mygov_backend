@@ -20,5 +20,6 @@ public class SchemeMasterController {
         SchemeMasterDto resp = schemeService.saveSchemeDetails(schemeDto);
 
         return new ResponseEntity(resp, HttpStatus.CREATED);
-    }
+    }   
+  
 }
