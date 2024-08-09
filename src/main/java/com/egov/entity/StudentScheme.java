@@ -25,14 +25,14 @@ public class StudentScheme {
     private double familyIncome;
     @CreationTimestamp
     private LocalDate applicationDate;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "scheme_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "scheme_id",unique = false)
     private SchemeMaster schemeMaster;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "address_id",unique = false)
     private Address address;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",unique = false)
     private User userId;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;

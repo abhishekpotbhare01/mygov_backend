@@ -1,11 +1,12 @@
 package com.egov.service;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
+
 import com.egov.dto.UserDto;
 import com.egov.dto.UserLoginDto;
 import com.egov.entity.User;
 import com.egov.repository.UserRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 
 
 @Service
