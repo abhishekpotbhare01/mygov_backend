@@ -49,7 +49,7 @@ public class StudentSchemeImpl implements IStudentSchemeService {
 				.orElseThrow(() -> new Exception("Scheme not found"));
 		StudentScheme studentScheme = modelMapper.map(studentSchemeDto, StudentScheme.class);
 
-		studentScheme.setUserId(user);
+		studentScheme.setUser(user);
 		studentScheme.setSchemeMaster(schemeMaster);
 
 		return modelMapper.map(studentSchemeRepo.save(studentScheme), StudentSchemeDto.class);
