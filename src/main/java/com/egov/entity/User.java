@@ -16,11 +16,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
     private int age;
+    private String firstName;
+    private String lastName;
     @Column(unique = true, nullable = false)
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
 
     public User(int age, String email, String password, Role role) {
         this.age = age;
