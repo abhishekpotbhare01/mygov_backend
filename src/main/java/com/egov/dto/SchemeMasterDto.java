@@ -21,7 +21,7 @@ import java.util.Date;
 public class SchemeMasterDto {
 	@JsonProperty(access = Access.READ_ONLY)
     private Integer schemeId;
-    private String name;
+    private String schemeName;
     private String schemeDescription;
     private LocalDate launchDate;
     @Enumerated(EnumType.STRING)
