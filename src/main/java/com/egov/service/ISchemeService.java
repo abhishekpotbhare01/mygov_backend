@@ -16,5 +16,7 @@ public interface ISchemeService {
     SchemeMasterDto getSchemeDetailsById(Integer schemeId);
 
 
+    List<SchemeMasterDto> getSchemeDetailsbyName(String schemeName);
+
     List<SchemeMasterDto> getAllSchemeDetails();
 }

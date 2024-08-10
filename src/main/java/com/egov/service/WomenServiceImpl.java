@@ -3,6 +3,7 @@ package com.egov.service;
 import com.egov.dto.WomenSchemeDto;
 import com.egov.entity.WomenScheme;
 import com.egov.repository.WomenRepository;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class WomenServiceImpl implements IWomenService {
 
     //Dependency Injection
@@ -34,6 +36,19 @@ public class WomenServiceImpl implements IWomenService {
     }
 
     @Override
+    public WomenSchemeDto updateWomenDataDetails(Integer id, WomenSchemeDto womenDto) {
+
+        WomenScheme existingData = womenrepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Women not found with id: " + id));
+
+        modelMapper.map(womenDto, existingData);
+
+        WomenScheme updatedData = womenrepository.save(existingData);
+        return modelMapper.map(updatedData, WomenSchemeDto.class);
+
+    }
+
+    @Override
     public WomenSchemeDto addNewWomenData(WomenSchemeDto womenDto) {
         WomenScheme womenentity = modelMapper.map(womenDto, WomenScheme.class);
         WomenScheme womensaveddata = womenrepository.save(womenentity);
@@ -45,36 +60,28 @@ public class WomenServiceImpl implements IWomenService {
     @Override
     public WomenSchemeDto getWomenDataById(Integer id) {
 
+        WomenScheme womenEntity = womenrepository.findById(id).orElseThrow(() -> new RuntimeException("WomenDto cannot be null"));
+
         Optional<WomenScheme> womenentity = womenrepository.findById(id);
 
         WomenSchemeDto womendata = modelMapper.map(womenentity, WomenSchemeDto.class);
+
         return womendata;
+
     }
 
 
     @Override
-    public WomenSchemeDto updateWomenDataDetails(Integer id, WomenSchemeDto womenDto) {
+    public void deleteWomendataById(Integer id) {
+        womenrepository.findById(id).orElseThrow(() -> new RuntimeException("Women not found with id: " + id));
 
-        Optional<WomenScheme> women = womenrepository.findById(id);
-        WomenScheme existingData = women.orElseThrow();
-        WomenScheme newData = modelMapper.map(womenDto, WomenScheme.class);
-        existingData.setAddress(newData.getAddress());
-        existingData.setAnnualIncome(newData.getAnnualIncome());
-        existingData.setDOB(newData.getDOB());
-        existingData.setMaritialStatus(newData.getMaritialStatus());
-        existingData.setOccupation(newData.getOccupation());
-        existingData.setPhoneNumber(newData.getPhoneNumber());
-        existingData.setSchemeMaster(newData.getSchemeMaster());
-
-        womenrepository.save(existingData);
-        return womenDto;
+        womenrepository.deleteById(id);
     }
 
 
     @Override
     public List<WomenSchemeDto> getWomenDataByName(String data) {
         return null;
+
     }
-
-
 }

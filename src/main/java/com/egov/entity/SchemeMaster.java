@@ -19,7 +19,7 @@ public class SchemeMaster {
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer schemeId;
-    private String name;
+    private String schemeName;
     private String schemeDescription;
     private LocalDate launchDate;
     @Enumerated(EnumType.STRING)
@@ -32,7 +32,7 @@ public class SchemeMaster {
 
 
     public SchemeMaster(String name, String schemeDescription, LocalDate launchDate, AgeCatagory age, Category category, String eligibilityCriteria, String docRequired) {
-        this.name = name;
+        this.schemeName = name;
         this.schemeDescription = schemeDescription;
         this.launchDate = launchDate;
         this.age = age;
@@ -43,6 +43,6 @@ public class SchemeMaster {
 
     @Override
     public String toString() {
-        return "Scheme{" + "schemeId=" + schemeId + ", name='" + name + '\'' + ", schemeDescription='" + schemeDescription + '\'' + ", launchDate=" + launchDate + ", age=" + age + '}';
+        return "Scheme{" + "schemeId=" + schemeId + ", SchemeName='" + schemeName + '\'' + ", schemeDescription='" + schemeDescription + '\'' + ", launchDate=" + launchDate + ", age=" + age + '}';
     }
 }

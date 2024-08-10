@@ -33,4 +33,40 @@ public class SchemeMasterController {
     }
 
 
+    @GetMapping
+    public ResponseEntity<?> getAllSchmeData() {
+
+        return ResponseEntity.status(HttpStatus.OK).body(schemeService.getAllSchemeDetails());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getSchmeDataById(@PathVariable Integer id) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(schemeService.getSchemeDetailsById(id));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> UpdateSchemeData(@PathVariable Integer id, @RequestBody SchemeMasterDto schemeMaterDto) {
+        try {
+
+            return ResponseEntity.status(HttpStatus.OK).body(schemeService.updateSchemeDetails(id, schemeMaterDto));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("schemeName/{schemeName}")
+    public ResponseEntity<?> getSchmeDataById(@PathVariable String schemeName) {
+        try {
+            List<SchemeMasterDto> schemes = schemeService.getSchemeDetailsbyName(schemeName);
+            if (schemes.isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+            return ResponseEntity.status(HttpStatus.OK).body(schemes);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 }

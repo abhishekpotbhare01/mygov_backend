@@ -52,6 +52,7 @@ public class StudentSchemeImpl implements IStudentSchemeService {
 		return modelMapper.map(studentSchemeRepo.save(studentScheme), StudentSchemeDto.class);
 	}
 
+//	Incomplete code/ not working
 	@Override
 	public StudentSchemeDto update(Integer schemeId, StudentSchemeDto studentSchemeDto) throws Exception {
 //		StudentScheme student = studentSchemeRepo.findById(schemeId).orElseThrow(() -> new Exception("Student not found"));
@@ -64,17 +65,20 @@ public class StudentSchemeImpl implements IStudentSchemeService {
 	    StudentScheme student = studentSchemeRepo.findById(schemeId)
                 .orElseThrow(() -> new Exception("Student not found"));
 
-
+	    	    
+	    
         modelMapper.typeMap(StudentSchemeDto.class, StudentScheme.class).map(studentSchemeDto, student);
-
+        
+        System.out.println(student);
+        
+        student.setStudentSchemeId(schemeId);
         StudentScheme updatedStudent = studentSchemeRepo.save(student);
 
 
         return modelMapper.map(updatedStudent, StudentSchemeDto.class);
 
 //		return NULL;
-	}
-	
+	}	
 	
 	@Override
 	public StudentSchemeDto get(Integer schemeId) throws Exception {
