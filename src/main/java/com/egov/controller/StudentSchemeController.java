@@ -39,10 +39,9 @@ public class StudentSchemeController {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-
 	}
 
-//	StudentSchemeDto update(String schemeId, StudentSchemeDto studentSchemeDto);
+
 	@PutMapping("/{studentSchemeId}")
 	public ResponseEntity<?> update(@PathVariable("studentSchemeId") Integer studentSchemeId,
 			@RequestBody StudentSchemeDto studentScheme) {

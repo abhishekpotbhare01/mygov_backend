@@ -1,11 +1,9 @@
 package com.egov.service;
 
 import com.egov.dto.StudentSchemeDto;
-import com.egov.dto.WomenDto;
 import com.egov.entity.SchemeMaster;
 import com.egov.entity.StudentScheme;
 import com.egov.entity.User;
-import com.egov.entity.WomenScheme;
 import com.egov.repository.SchemeRepository;
 import com.egov.repository.StudentSchemeRepo;
 import com.egov.repository.UserRepository;
@@ -17,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.lang.reflect.Type;
 import org.modelmapper.TypeToken;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

@@ -1,6 +1,6 @@
 package com.egov.service;
 
-import com.egov.dto.WomenDto;
+import com.egov.dto.WomenSchemeDto;
 import com.egov.entity.WomenScheme;
 import com.egov.repository.WomenRepository;
 import org.modelmapper.ModelMapper;
@@ -23,37 +23,37 @@ public class WomenServiceImpl implements IWomenService {
     ModelMapper modelMapper = new ModelMapper();
 
     @Override
-    public List<WomenDto> getAllWomensData() {
+    public List<WomenSchemeDto> getAllWomensData() {
 
         List<WomenScheme> womenEntities = womenrepository.findAll();
-        Type listType = new TypeToken<List<WomenDto>>() {
+        Type listType = new TypeToken<List<WomenSchemeDto>>() {
         }.getType();
-        List<WomenDto> womendata = modelMapper.map(womenEntities, listType);
+        List<WomenSchemeDto> womendata = modelMapper.map(womenEntities, listType);
 
         return womendata;
     }
 
     @Override
-    public WomenDto addNewWomenData(WomenDto womenDto) {
+    public WomenSchemeDto addNewWomenData(WomenSchemeDto womenDto) {
         WomenScheme womenentity = modelMapper.map(womenDto, WomenScheme.class);
         WomenScheme womensaveddata = womenrepository.save(womenentity);
-        WomenDto womendata = modelMapper.map(womensaveddata, WomenDto.class);
+        WomenSchemeDto womendata = modelMapper.map(womensaveddata, WomenSchemeDto.class);
         return womendata;
     }
 
 
     @Override
-    public WomenDto getWomenDataById(Integer id) {
+    public WomenSchemeDto getWomenDataById(Integer id) {
 
         Optional<WomenScheme> womenentity = womenrepository.findById(id);
 
-        WomenDto womendata = modelMapper.map(womenentity, WomenDto.class);
+        WomenSchemeDto womendata = modelMapper.map(womenentity, WomenSchemeDto.class);
         return womendata;
     }
 
 
     @Override
-    public WomenDto updateWomenDataDetails(Integer id, WomenDto womenDto) {
+    public WomenSchemeDto updateWomenDataDetails(Integer id, WomenSchemeDto womenDto) {
 
         Optional<WomenScheme> women = womenrepository.findById(id);
         WomenScheme existingData = women.orElseThrow();
@@ -72,7 +72,7 @@ public class WomenServiceImpl implements IWomenService {
 
 
     @Override
-    public List<WomenDto> getWomenDataByName(String data) {
+    public List<WomenSchemeDto> getWomenDataByName(String data) {
         return null;
     }
 

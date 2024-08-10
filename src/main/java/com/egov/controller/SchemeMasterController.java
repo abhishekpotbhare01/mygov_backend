@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/scheme")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -20,6 +22,15 @@ public class SchemeMasterController {
         SchemeMasterDto resp = schemeService.saveSchemeDetails(schemeDto);
 
         return new ResponseEntity(resp, HttpStatus.CREATED);
-    }   
-  
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<?> getAllSchemes() {
+
+        List<SchemeMasterDto> resp = schemeService.getAllSchemeDetails();
+
+        return new ResponseEntity(resp, HttpStatus.OK);
+    }
+
+
 }
