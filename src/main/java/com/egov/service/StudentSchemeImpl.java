@@ -56,21 +56,25 @@ public class StudentSchemeImpl implements IStudentSchemeService {
 	}
 
 	@Override
-	public String update(Integer schemeId, StudentSchemeDto studentSchemeDto) throws Exception {
-		StudentScheme student = studentSchemeRepo.findById(schemeId).orElseThrow(() -> new Exception("Student not found"));
-		
-//		modelMapper.map(studentSchemeDto, student);
-		
-	    // Map DTO to entity, excluding the address
-	    modelMapper.typeMap(StudentSchemeDto.class, StudentScheme.class).map(studentSchemeDto, student);
+	public StudentSchemeDto update(Integer schemeId, StudentSchemeDto studentSchemeDto) throws Exception {
+//		StudentScheme student = studentSchemeRepo.findById(schemeId).orElseThrow(() -> new Exception("Student not found"));
+//
+//	    modelMapper.map(studentSchemeDto, student);
+//
+//	    StudentScheme updatedData = studentSchemeRepo.save(student);
+//	    return modelMapper.map(updatedData, StudentSchemeDto.class);
 	    
-		StudentScheme updatedStudent = studentSchemeRepo.save(student);
+	    StudentScheme student = studentSchemeRepo.findById(schemeId)
+                .orElseThrow(() -> new Exception("Student not found"));
 
-		if(updatedStudent.getStatus() != null) {
-			return "Record Updated successfully!!";
-		}
-		
-		return "Record failed to Update";
+
+        modelMapper.typeMap(StudentSchemeDto.class, StudentScheme.class).map(studentSchemeDto, student);
+
+        StudentScheme updatedStudent = studentSchemeRepo.save(student);
+
+
+        return modelMapper.map(updatedStudent, StudentSchemeDto.class);
+
 //		return NULL;
 	}
 	

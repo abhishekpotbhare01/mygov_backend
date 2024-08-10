@@ -32,7 +32,7 @@ public class StudentSchemeController {
 	}
 
 	@GetMapping("/{studentSchemeId}")
-	public ResponseEntity<?> getStudentData(@PathVariable @Valid  Integer id) {
+	public ResponseEntity<?> getStudentData(@PathVariable("studentSchemeId")  Integer id) {
 		try {
 			System.out.println("in get studentschema");
 			return ResponseEntity.ok(studentSchemeService.get(id));	
@@ -44,10 +44,10 @@ public class StudentSchemeController {
 
 //	StudentSchemeDto update(String schemeId, StudentSchemeDto studentSchemeDto);
 	@PutMapping("/{studentSchemeId}")
-	public ResponseEntity<?> createScheme(@PathVariable("studentSchemeId") Integer studentSchemeId,
+	public ResponseEntity<?> update(@PathVariable("studentSchemeId") Integer studentSchemeId,
 			@RequestBody StudentSchemeDto studentScheme) {
 		try {
-			String resp = studentSchemeService.update(studentSchemeId, studentScheme);
+			StudentSchemeDto resp = studentSchemeService.update(studentSchemeId, studentScheme);
 			return new ResponseEntity<>(resp, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
