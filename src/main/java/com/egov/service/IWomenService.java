@@ -10,6 +10,5 @@ public interface IWomenService {
    WomenDto addNewWomenData(WomenDto womendto);
    WomenDto getWomenDataById(Integer id);
    WomenDto updateWomenDataDetails(Integer id, WomenDto womenDto);
-   List<WomenDto> getWomenDataByName(String data);
-
+   void deleteWomendataById(Integer id);
 }

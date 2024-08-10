@@ -71,10 +71,7 @@ public class WomenServiceImpl implements IWomenService {
     }
 
 
-    @Override
-    public List<WomenDto> getWomenDataByName(String data) {
-        return null;
-    }
+
 
 
 }
