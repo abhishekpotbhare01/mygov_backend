@@ -1,0 +1,192 @@
+Step 1 : in database add admin directily --->>>
+
+INSERT
+IGNORE INTO user (age, email, first_name, last_name, password, role)
+VALUES (25, 'admin@gmail.com', 'admin', 'admin', 'admin@12345', 'ADMIN');
+
+
+---- In swagger --->>>
+
+Step 2 : // add user
+
+{
+  "age": 25,
+  "firstName": "user1",
+  "lastName": "user1",
+  "email": "user1@gmail.com",
+  "password": "user1@123",
+  "confirmPassword": "user1@123"
+}
+
+{
+  "age": 27,
+  "firstName": "user3",
+  "lastName": "user3",
+  "email": "user3@gmail.com",
+  "password": "user3@123",
+  "confirmPassword": "user3@123"
+}
+
+
+{
+  "age": 24,
+  "firstName": "user4",
+  "lastName": "user4",
+  "email": "user4@gmail.com",
+  "password": "user4@123",
+  "confirmPassword": "user4@123"
+}
+
+
+Step 3 : // add schema_master
+
+  {
+   "schemeName": "LADLI_Behna",
+   "schemeDescription": "THIS IS Scheme for Women Empowerment",
+   "launchDate": "2024-08-10",
+   "age": "CHILD",
+   "category": "WOMEN_EMPOWERMENT",
+   "eligibilityCriteria": "Female",
+   "docRequired": "Aadhar card"
+  }
+
+
+ {
+   "schemeName": "PM KISHAN YOJNA",
+   "schemeDescription": "This is usedful for indian farmers",
+   "launchDate": "2024-08-10",
+   "age": "CHILD",
+   "category": "AGRICULTURE",
+   "eligibilityCriteria": "LAND for Agriculture",
+   "docRequired": "AAdhar card"
+ }
+
+
+  {
+    "schemeName": "PM Vidya Lakshmi Karyakram",
+    "schemeDescription": "This is useful for Indian Students",
+    "launchDate": "2024-08-10",
+    "age": "CHILD",
+    "category": "EDUCATION",
+    "eligibilityCriteria": "SCHOOL STUDENT",
+    "docRequired": "BONAFIDE Certificate"
+  }
+
+Step 4 : //add Student
+
+userId : 2 // Check db entry and change it accordingly
+schemeId: 1 // check db entry and change it accordingly
+
+
+{
+  "studentDetails": {
+    "studentName": "studen1",
+    "studentSurname": "studen1",
+    "instituteName": "abc",
+    "courseName": "cs",
+    "marks": 60,
+    "grade": "A"
+  },
+  "familyIncome": 500000,
+  "address": {
+    "village_street": "abc",
+    "city": "def",
+    "state": "Maharashtra",
+    "zip": "000000",
+    "country": "India"
+  }
+}
+
+
+{
+  "studentDetails": {
+    "studentName": "studen2",
+    "studentSurname": "studen2",
+    "instituteName": "def",
+    "courseName": "ee",
+    "marks": 70,
+    "grade": "B+"
+  },
+  "familyIncome": 700000,
+  "address": {
+    "village_street": "def",
+    "city": "pune",
+    "state": "Maharashtra",
+    "zip": "000002",
+    "country": "India"
+  }
+}
+
+
+{
+  "studentDetails": {
+    "studentName": "studen3",
+    "studentSurname": "studen3",
+    "instituteName": "ghi",
+    "courseName": "mech",
+    "marks": 75,
+    "grade": "A+"
+  },
+  "familyIncome": 900000,
+  "address": {
+    "village_street": "ijk",
+    "city": "pune",
+    "state": "Maharashtra",
+    "zip": "000003",
+    "country": "India"
+  }
+}
+
+
+{
+  "studentDetails": {
+    "studentName": "studen4",
+    "studentSurname": "studen4",
+    "instituteName": "jklm",
+    "courseName": "civil",
+    "marks": 65,
+    "grade": "A"
+  },
+  "familyIncome": 400000,
+  "address": {
+    "village_street": "sjkah",
+    "city": "pune",
+    "state": "Maharashtra",
+    "zip": "000004",
+    "country": "India"
+  }
+}
+
+
+
+
+----------------//-----------------------------
+Other links
+
+manual scheme_master table alteration and data add.
+
+https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/student_scheme_img.jpg?raw=true
+sudent-scheme-form
+
+https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/pm_kisan.png?raw=true
+farmer-scheme-form
+
+https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/ladli-behna-yojana.png?raw=true
+women-scheme-form
+
+
+update scheme_master set image_url="https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/student_scheme_img.jpg?raw=true" where scheme_id=3;
+
+update scheme_master set form_path="sudent-scheme-form" where scheme_id=3;
+
+
+
+
+update scheme_master set image_url="https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/pm_kisan.png?raw=true" where scheme_id=2;
+
+update scheme_master set form_path="farmer-scheme-form" where scheme_id=2;
+
+
+update scheme_master set image_url="https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/ladli-behna-yojana.png?raw=true" where scheme_id=1;
+
+update scheme_master set form_path="women-scheme-form" where scheme_id=1;

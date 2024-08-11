@@ -30,4 +30,6 @@ public class SchemeMasterDto {
     private Category category;
     private String eligibilityCriteria;
     private String docRequired;
+    private String imageUrl;
+    private String formPath;
 }
