@@ -75,7 +75,7 @@ Step 3 : // add schema_master
     "eligibilityCriteria": "SCHOOL STUDENT",
     "docRequired": "BONAFIDE Certificate",
     "imageUrl": "https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/student_scheme_img.jpg?raw=true",
-    "formPath": "sudent-scheme-form"
+    "formPath": "student-scheme-form"
   }
 
 Step 4 : //add Student
