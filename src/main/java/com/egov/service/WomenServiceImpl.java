@@ -1,8 +1,9 @@
 package com.egov.service;
-import com.egov.entity.*;
-import com.egov.dto.WomenDto;
+
+import com.egov.dto.WomenSchemeDto;
 import com.egov.entity.WomenScheme;
 import com.egov.repository.WomenRepository;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,70 +13,75 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
-import com.egov.repository.UserRepository;
-import com.egov.repository.WomenRepository;
-
-import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class WomenServiceImpl implements IWomenService {
 
-   //Dependency Injection 
-   @Autowired
-   private WomenRepository womenRepository; 
-   
+    //Dependency Injection
+    @Autowired
+    private WomenRepository womenrepository;
+
     //to map Dto to entity or vice versa...
     ModelMapper modelMapper = new ModelMapper();
 
     @Override
-    public List<WomenDto> getAllWomensData() {
-   
-    List<WomenScheme> womenEntities = womenRepository.findAll();
-    Type listType = new TypeToken<List<WomenDto>>(){}.getType();
-    List<WomenDto> womendata = modelMapper.map(womenEntities, listType);
-   
-    return womendata;
-   }
+    public List<WomenSchemeDto> getAllWomensData() {
 
-   @Override
-public WomenDto updateWomenDataDetails(Integer id, WomenDto womenDto) {
-   
-	WomenScheme existingData = womenRepository.findById(id)
-	        .orElseThrow(() -> new RuntimeException("Women not found with id: " + id));
+        List<WomenScheme> womenEntities = womenrepository.findAll();
+        Type listType = new TypeToken<List<WomenSchemeDto>>() {
+        }.getType();
+        List<WomenSchemeDto> womendata = modelMapper.map(womenEntities, listType);
 
-	    modelMapper.map(womenDto, existingData);
-
-	    WomenScheme updatedData = womenRepository.save(existingData);
-	    return modelMapper.map(updatedData, WomenDto.class);
-    }
-
-
-@Override
-public WomenDto getWomenDataById(Integer id) {
-   
-  WomenScheme womenEntity=womenRepository.findById(id).orElseThrow(()-> new RuntimeException("WomenDto cannot be null"));
-
-   return modelMapper.map(womenEntity,WomenDto.class);
-}
-
-
-@Override
-public void deleteWomendataById(Integer id) {
-	womenRepository.findById(id).orElseThrow(()-> new RuntimeException("Women not found with id: " + id)); 
-		
-      womenRepository.deleteById(id);
-  }
-
-@Override
-public WomenDto addNewWomenData(WomenDto womenDto) {
-        WomenScheme womenentity = modelMapper.map(womenDto, WomenScheme.class);
-        WomenScheme womensaveddata = womenRepository.save(womenentity);
-        WomenDto womendata = modelMapper.map(womensaveddata, WomenDto.class);
         return womendata;
     }
-}		
+
+    @Override
+    public WomenSchemeDto updateWomenDataDetails(Integer id, WomenSchemeDto womenDto) {
+
+        WomenScheme existingData = womenrepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Women not found with id: " + id));
+
+        modelMapper.map(womenDto, existingData);
+
+        WomenScheme updatedData = womenrepository.save(existingData);
+        return modelMapper.map(updatedData, WomenSchemeDto.class);
+
+    }
+
+    @Override
+    public WomenSchemeDto addNewWomenData(WomenSchemeDto womenDto) {
+        WomenScheme womenentity = modelMapper.map(womenDto, WomenScheme.class);
+        WomenScheme womensaveddata = womenrepository.save(womenentity);
+        WomenSchemeDto womendata = modelMapper.map(womensaveddata, WomenSchemeDto.class);
+        return womendata;
+    }
 
 
+    @Override
+    public WomenSchemeDto getWomenDataById(Integer id) {
+
+        WomenScheme womenEntity = womenrepository.findById(id).orElseThrow(() -> new RuntimeException("WomenDto cannot be null"));
+
+        Optional<WomenScheme> womenentity = womenrepository.findById(id);
+
+        WomenSchemeDto womendata = modelMapper.map(womenentity, WomenSchemeDto.class);
+
+        return womendata;
+
+    }
 
 
+    @Override
+    public void deleteWomendataById(Integer id) {
+        womenrepository.findById(id).orElseThrow(() -> new RuntimeException("Women not found with id: " + id));
 
+        womenrepository.deleteById(id);
+    }
+
+
+    @Override
+    public List<WomenSchemeDto> getWomenDataByName(String data) {
+        return null;
+
+    }
+}

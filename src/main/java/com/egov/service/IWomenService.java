@@ -1,14 +1,20 @@
 package com.egov.service;
 
-import java.util.List;
+import com.egov.dto.WomenSchemeDto;
 
-import com.egov.dto.WomenDto;
+import java.util.List;
 
 public interface IWomenService {
 
-   List<WomenDto> getAllWomensData();
-   WomenDto addNewWomenData(WomenDto womendto);
-   WomenDto getWomenDataById(Integer id);
-   WomenDto updateWomenDataDetails(Integer id, WomenDto womenDto);
-   void deleteWomendataById(Integer id);
+    List<WomenSchemeDto> getAllWomensData();
+
+    WomenSchemeDto addNewWomenData(WomenSchemeDto womendto);
+
+    WomenSchemeDto getWomenDataById(Integer id);
+
+    WomenSchemeDto updateWomenDataDetails(Integer id, WomenSchemeDto womenDto);
+
+    List<WomenSchemeDto> getWomenDataByName(String data);
+
+    void deleteWomendataById(Integer id);
 }

@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class WomenDto {
+public class WomenSchemeDto {
 
 private Integer id;
 private String Name;
