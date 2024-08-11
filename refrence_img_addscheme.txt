@@ -48,6 +48,8 @@ Step 3 : // add schema_master
    "category": "WOMEN_EMPOWERMENT",
    "eligibilityCriteria": "Female",
    "docRequired": "Aadhar card"
+    "imageUrl": "https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/ladli-behna-yojana.png?raw=true",
+    "formPath": "women-scheme-form"
   }
 
 
@@ -59,6 +61,8 @@ Step 3 : // add schema_master
    "category": "AGRICULTURE",
    "eligibilityCriteria": "LAND for Agriculture",
    "docRequired": "AAdhar card"
+    "imageUrl": "https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/pm_kisan.png?raw=true",
+    "formPath": "farmer-scheme-form"
  }
 
 
@@ -69,7 +73,9 @@ Step 3 : // add schema_master
     "age": "CHILD",
     "category": "EDUCATION",
     "eligibilityCriteria": "SCHOOL STUDENT",
-    "docRequired": "BONAFIDE Certificate"
+    "docRequired": "BONAFIDE Certificate",
+    "imageUrl": "https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/student_scheme_img.jpg?raw=true",
+    "formPath": "sudent-scheme-form"
   }
 
 Step 4 : //add Student
