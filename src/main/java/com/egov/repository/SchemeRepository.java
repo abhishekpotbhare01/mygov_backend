@@ -22,4 +22,10 @@ public interface SchemeRepository extends JpaRepository<SchemeMaster, Integer> {
             "LEFT JOIN com.egov.entity.FarmerScheme farmerScheme ON scheme.schemeId = farmerScheme.schemeMaster.schemeId " +
             "WHERE scheme.schemeId = :schemeId AND (studentScheme.status =:status OR farmerScheme.status = :status)")
     List<AllSchemeDto> findBySchemeId(@Param("schemeId") Integer schemeId, @Param("status") Status status);
+
+    @Query(value = "SELECT scheme_id FROM women_scheme WHERE user_id = :userId " +
+            "UNION " +
+            "SELECT scheme_id FROM student_scheme WHERE user_id = :userId", 
+    nativeQuery = true)
+    List<Integer> findByUserId(@Param("userId") Integer userId); 
 }

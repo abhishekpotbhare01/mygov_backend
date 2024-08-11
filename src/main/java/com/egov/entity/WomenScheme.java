@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "women")
+@Table(name = "women_scheme")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -18,9 +18,10 @@ public class WomenScheme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String firstName;
+    private String lastName;
     private LocalDate DOB;
     private Long phoneNumber;
-    private String Occupation;
     private MaritialStatus maritialStatus;
     private long annualIncome;
     @ManyToOne(cascade = CascadeType.ALL)
