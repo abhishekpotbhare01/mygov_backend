@@ -32,7 +32,12 @@ public class SchemeMasterController {
         return new ResponseEntity(resp, HttpStatus.OK);
     }
 
-
+   @GetMapping("/userId/{userId}")
+   public ResponseEntity<?> getAllSchemeIdByUserId(@PathVariable Integer userId)
+   {
+	   return ResponseEntity.status(HttpStatus.OK).body(schemeService.getAllSchemeIdByUserId(userId));
+   }
+    
     @GetMapping
     public ResponseEntity<?> getAllSchmeData() {
 

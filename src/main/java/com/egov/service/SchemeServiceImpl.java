@@ -27,7 +27,7 @@ public class SchemeServiceImpl implements ISchemeService {
 
     @Override
     public SchemeMasterDto findBySchemeById(Integer schemeId) {
-
+   
         SchemeMaster schemeMaster = schemeRepository.findById(schemeId)
                 .orElseThrow(() -> new RuntimeException(""));
 
@@ -97,4 +97,12 @@ public class SchemeServiceImpl implements ISchemeService {
         return schemedata;
     }
 
+	@Override
+	public List<Integer> getAllSchemeIdByUserId(Integer userId) {
+		List<Integer>list=schemeRepository.findByUserId(userId);
+		System.out.println(list);
+		return list;
+	}
+
+    
 }
