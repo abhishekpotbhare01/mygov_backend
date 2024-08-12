@@ -1,7 +1,6 @@
 package com.egov.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,36 +32,27 @@ public class SchemeMaster {
     private String imageUrl;
     @Column(name = "form_path")
     private String formPath;
-
-//    public SchemeMaster(String name, String schemeDescription, LocalDate launchDate, AgeCatagory age, Category category, String eligibilityCriteria, String docRequired) {
-//        this.schemeName = name;
-//        this.schemeDescription = schemeDescription;
-//        this.launchDate = launchDate;
-//        this.age = age;
-//        this.category = category;
-//        this.eligibilityCriteria = eligibilityCriteria;
-//        this.docRequired = docRequired;
-//    }
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private SchemeConst schemeConst;
 
 
     public SchemeMaster(Integer schemeId, String schemeName, String schemeDescription, LocalDate launchDate,
-    		AgeCatagory age, Category category, String eligibilityCriteria, String docRequired, String imageUrl,
-    		String formPath) {
-//    	super();
-    	this.schemeId = schemeId;
-    	this.schemeName = schemeName;
-    	this.schemeDescription = schemeDescription;
-    	this.launchDate = launchDate;
-    	this.age = age;
-    	this.category = category;
-    	this.eligibilityCriteria = eligibilityCriteria;
-    	this.docRequired = docRequired;
-    	this.imageUrl = imageUrl;
-    	this.formPath = formPath;
+                        AgeCatagory age, Category category, String eligibilityCriteria, String docRequired, String imageUrl,
+                        String formPath) {
+        this.schemeId = schemeId;
+        this.schemeName = schemeName;
+        this.schemeDescription = schemeDescription;
+        this.launchDate = launchDate;
+        this.age = age;
+        this.category = category;
+        this.eligibilityCriteria = eligibilityCriteria;
+        this.docRequired = docRequired;
+        this.imageUrl = imageUrl;
+        this.formPath = formPath;
     }
 
-    
-    
+
     @Override
     public String toString() {
         return "Scheme{" + "schemeId=" + schemeId + ", SchemeName='" + schemeName + '\'' + ", schemeDescription='" + schemeDescription + '\'' + ", launchDate=" + launchDate + ", age=" + age + '}';

@@ -31,4 +31,5 @@ public class FarmerScheme {
     private User userId;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
+    private String comments;
 }

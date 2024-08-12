@@ -1,0 +1,21 @@
+package com.egov.dto;
+
+import com.egov.entity.SchemeConst;
+import com.egov.entity.Status;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ApprovalPayLoad {
+    private Integer applicationId;
+    private Status status;
+    private String comments;
+    private SchemeConst schemeConst;
+}

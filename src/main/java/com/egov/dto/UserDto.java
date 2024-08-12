@@ -21,11 +21,13 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
+    @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
+    @JsonProperty(access = Access.WRITE_ONLY)
     private String confirmPassword;
     @Enumerated(EnumType.STRING)
     @JsonProperty(access = Access.READ_ONLY)
-    private Role role = Role.USER;
+    private Role role = Role.ROLE_USER;
 
     public UserDto(int age, String email, String password, String confirmPassword, Role role) {
         this.age = age;
