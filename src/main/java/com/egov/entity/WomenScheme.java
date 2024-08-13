@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "women_scheme")
 @Setter
@@ -18,9 +20,9 @@ public class WomenScheme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String firstName;
-    private String lastName;
-    private LocalDate DOB;
+   // private String firstName;
+    //private String lastName;
+    //private LocalDate DOB;
     private Long phoneNumber;
     private MaritialStatus maritialStatus;
     private long annualIncome;
@@ -33,6 +35,8 @@ public class WomenScheme {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User userId;
+    @CreationTimestamp
+    private LocalDate applicationDate;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
 

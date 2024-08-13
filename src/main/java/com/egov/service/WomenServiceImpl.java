@@ -1,7 +1,12 @@
 package com.egov.service;
 
 import com.egov.dto.WomenSchemeDto;
+import com.egov.entity.SchemeMaster;
+import com.egov.entity.User;
 import com.egov.entity.WomenScheme;
+import com.egov.repository.SchemeRepository;
+import com.egov.repository.StudentSchemeRepo;
+import com.egov.repository.UserRepository;
 import com.egov.repository.WomenRepository;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
@@ -17,12 +22,24 @@ import java.util.Optional;
 @Transactional
 public class WomenServiceImpl implements IWomenService {
 
-    //Dependency Injection
-    @Autowired
-    private WomenRepository womenrepository;
-
-    //to map Dto to entity or vice versa...
-    ModelMapper modelMapper = new ModelMapper();
+	
+	private WomenRepository womenrepository;
+	private final UserRepository userRepository;
+	private final SchemeRepository schemeRepository;
+	private final ModelMapper modelMapper;
+	
+	//Dependency injection
+	@Autowired
+	public WomenServiceImpl(WomenRepository womenrepository, UserRepository userRepository,
+			SchemeRepository schemeRepository, ModelMapper modelMapper) {
+		this.womenrepository = womenrepository;
+		this.userRepository = userRepository;
+		this.schemeRepository = schemeRepository;
+		this.modelMapper = modelMapper;
+	}
+	
+	
+    
 
     @Override
     public List<WomenSchemeDto> getAllWomensData() {
@@ -49,9 +66,14 @@ public class WomenServiceImpl implements IWomenService {
     }
 
     @Override
-    public WomenSchemeDto addNewWomenData(WomenSchemeDto womenDto) {
-        WomenScheme womenentity = modelMapper.map(womenDto, WomenScheme.class);
-        WomenScheme womensaveddata = womenrepository.save(womenentity);
+    public WomenSchemeDto addNewWomenData(Integer userId, Integer schemeId, WomenSchemeDto womenDto) {
+         User user=userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found with id: " +userId ));
+         SchemeMaster schemeMaster =schemeRepository.findById(schemeId).orElseThrow(()->new RuntimeException("scheme not found with id: " +schemeId ));
+
+    	WomenScheme womenEntity = modelMapper.map(womenDto, WomenScheme.class);
+           womenEntity.setUserId(user);
+           womenEntity.setSchemeMaster(schemeMaster);
+    	WomenScheme womensaveddata = womenrepository.save(womenEntity);
         WomenSchemeDto womendata = modelMapper.map(womensaveddata, WomenSchemeDto.class);
         return womendata;
     }

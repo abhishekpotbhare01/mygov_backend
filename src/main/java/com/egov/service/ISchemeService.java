@@ -1,6 +1,5 @@
 package com.egov.service;
 
-import com.egov.dto.AllAppliedSchemeStatusDto;
 import com.egov.dto.AllSchemeDto;
 import com.egov.dto.SchemeMasterDto;
 
@@ -23,4 +22,5 @@ public interface ISchemeService {
     List<SchemeMasterDto> getAllSchemeDetails();
     
     List<AllSchemeDto>getAllSchemeByUserId(Integer userId);
+    
 }

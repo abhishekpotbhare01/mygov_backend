@@ -1,6 +1,5 @@
 package com.egov.repository;
 
-import com.egov.dto.AllAppliedSchemeStatusDto;
 import com.egov.dto.AllSchemeDto;
 import com.egov.entity.SchemeMaster;
 import com.egov.entity.Status;
