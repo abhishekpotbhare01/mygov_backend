@@ -1,5 +1,6 @@
 package com.egov.service;
 
+import com.egov.dto.AllSchemeDto;
 import com.egov.dto.SchemeMasterDto;
 
 import java.util.List;
@@ -20,5 +21,6 @@ public interface ISchemeService {
 
     List<SchemeMasterDto> getAllSchemeDetails();
     
-    List<Integer>getAllSchemeIdByUserId(Integer userId);
+    List<AllSchemeDto>getAllSchemeByUserId(Integer userId);
+    
 }

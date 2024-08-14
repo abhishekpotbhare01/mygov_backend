@@ -23,10 +23,11 @@ public class WomenController {
 
     }
 
-    @PostMapping("/addnewdata")
-    public ResponseEntity<?> addNewWomen(@RequestBody WomenSchemeDto womenDto) {
+    @PostMapping("/{userId}")
+    public ResponseEntity<?> addNewWomen(@PathVariable Integer userId,
+    		@RequestParam Integer schemeId, @RequestBody WomenSchemeDto womenDto) {
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(womenService.addNewWomenData(womenDto));
+            return ResponseEntity.status(HttpStatus.CREATED).body(womenService.addNewWomenData(userId, schemeId, womenDto));
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }

@@ -1,5 +1,7 @@
 package com.egov.dto;
 
+import java.time.LocalDate;
+
 import com.egov.entity.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,6 +28,7 @@ public class StudentSchemeDto {
     private AddressDto address;
 	@JsonProperty(access = Access.READ_ONLY)
     private UserDto user;
+	private LocalDate applicationDate;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
 }

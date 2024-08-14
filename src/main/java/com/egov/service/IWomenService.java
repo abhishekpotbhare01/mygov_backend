@@ -8,7 +8,7 @@ public interface IWomenService {
 
     List<WomenSchemeDto> getAllWomensData();
 
-    WomenSchemeDto addNewWomenData(WomenSchemeDto womendto);
+    WomenSchemeDto addNewWomenData(Integer userId,Integer schemeId, WomenSchemeDto womendto);
 
     WomenSchemeDto getWomenDataById(Integer id);
 

@@ -2,6 +2,8 @@ package com.egov.dto;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.egov.entity.Address;
 import com.egov.entity.MaritialStatus;
 import com.egov.entity.SchemeMaster;
@@ -27,14 +29,15 @@ import lombok.Setter;
 @Getter
 public class WomenSchemeDto {
 
-	private String firstName;
-    private String lastName;
-    private LocalDate DOB;
+	//private String firstName;
+    //private String lastName;
+    //private LocalDate DOB;
     private Long phoneNumber;
     private MaritialStatus maritialStatus;
     private long annualIncome;
     private SchemeMaster schemeMaster;
     private Address address;
     private User userId;
+    private LocalDate applicationDate;    
     private Status status = Status.PENDING;
 }

@@ -1,5 +1,6 @@
 package com.egov.service;
 
+import com.egov.dto.AllSchemeDto;
 import com.egov.dto.SchemeMasterDto;
 import com.egov.entity.SchemeMaster;
 import com.egov.repository.SchemeRepository;
@@ -98,8 +99,8 @@ public class SchemeServiceImpl implements ISchemeService {
     }
 
 	@Override
-	public List<Integer> getAllSchemeIdByUserId(Integer userId) {
-		List<Integer>list=schemeRepository.findByUserId(userId);
+	public List<AllSchemeDto> getAllSchemeByUserId(Integer userId) {
+		List<AllSchemeDto>list=schemeRepository.findByUid(userId);
 		System.out.println(list);
 		return list;
 	}
