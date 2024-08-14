@@ -11,6 +11,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
 @Setter
@@ -27,6 +29,6 @@ public class FarmerSchemeDto {
     private User userId;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
-
     private String comments;
+    private LocalDate applicationDate;
 }

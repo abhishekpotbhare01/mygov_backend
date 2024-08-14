@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @Component
 public class Jwtutils {
@@ -25,11 +26,15 @@ public class Jwtutils {
         String username = authentication.getName();
 
         Date currentDate = new Date();
-
         Date expireDate = new Date(currentDate.getTime() + jwtExpirationDate);
+
+        String roles = authentication.getAuthorities().stream()
+                .map(grantedAuthority -> grantedAuthority.getAuthority())
+                .collect(Collectors.joining(","));
 
         String token = Jwts.builder()
                 .setSubject(username)
+                .claim("roles", roles)  // Adding roles as a claim
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
                 .signWith(key())
@@ -43,6 +48,7 @@ public class Jwtutils {
                 Decoders.BASE64.decode(jwtSecret)
         );
     }
+
     public String getUsername(String token) {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key())
@@ -56,10 +62,19 @@ public class Jwtutils {
     }
 
     public boolean validateToken(String token) {
-        Jwts.parserBuilder()
-                .setSigningKey(key())
-                .build()
-                .parse(token);
-        return true;
+        try {
+            Jwts.parserBuilder()
+                    .setSigningKey(key())
+                    .build()
+                    .parseClaimsJws(token);
+            return true;
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
+            return false;
+        } catch (io.jsonwebtoken.MalformedJwtException e) {
+
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

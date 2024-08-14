@@ -19,16 +19,14 @@ public class FarmerSchemeController {
         this.farmerSchemeService = farmerSchemeService;
     }
 
-
     @PostMapping("/{userId}")
     public ResponseEntity<?> createScheme(@PathVariable("userId") Integer userId,
                                           @RequestParam("schemeId") Integer schemeId,
                                           @RequestBody FarmerSchemeDto farmerScheme) {
-
         try {
             FarmerSchemeDto farmerSchemeDto = farmerSchemeService.applyFarmerScheme(farmerScheme, userId, schemeId);
-            return new ResponseEntity<>(farmerSchemeDto, HttpStatus.CREATED);
 
+            return new ResponseEntity<>(farmerSchemeDto, HttpStatus.CREATED);
 
         } catch (Exception e) {
             throw new RuntimeException(e);

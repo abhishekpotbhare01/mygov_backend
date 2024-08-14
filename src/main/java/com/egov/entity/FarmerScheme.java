@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 
 @Getter
@@ -13,7 +16,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "farmer_scheme")
-
 public class FarmerScheme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +23,17 @@ public class FarmerScheme {
     private String landDetails;
     private double income;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "scheme_id", unique = false)
+    @JoinColumn(name = "scheme_id")
     private SchemeMaster schemeMaster;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", unique = false)
+    @JoinColumn(name = "address_id")
     private Address address;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", unique = false)
+    @JoinColumn(name = "user_id")
     private User userId;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
     private String comments;
+    @CreatedDate
+    private LocalDate applicationDate;
 }
