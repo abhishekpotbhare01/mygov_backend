@@ -1,6 +1,7 @@
 package com.egov.controller;
 
 
+import com.egov.dto.JwtAuthResponse;
 import com.egov.dto.ResetPasswordDto;
 import com.egov.dto.UserDto;
 import com.egov.dto.UserLoginDto;
@@ -28,8 +29,8 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody UserLoginDto userLoginDto) {
 
-        UserDto registerUser = userService.loginUser(userLoginDto);
-        return new ResponseEntity<>(registerUser, HttpStatus.OK);
+        JwtAuthResponse jwtAuthResponse = userService.loginUser(userLoginDto);
+        return new ResponseEntity<>(jwtAuthResponse, HttpStatus.OK);
     }
     
     @PostMapping("/reset-password")

@@ -3,6 +3,7 @@ package com.egov.service;
 import com.egov.dto.FarmerSchemeDto;
 import com.egov.entity.FarmerScheme;
 import com.egov.entity.SchemeMaster;
+import com.egov.entity.Status;
 import com.egov.entity.User;
 import com.egov.repository.FarmerSchemeRepo;
 import com.egov.repository.SchemeRepository;
@@ -52,6 +53,23 @@ public class FarmerSchemeServiceImpl implements IFarmerSchemeService {
 
 
         return modelMapper.map(farmerSchemeSaved, FarmerSchemeDto.class);
+    }
+
+    @Override
+    public String updateStatus(Integer applicationId, Status status, String comments) {
+
+
+        FarmerScheme farmerScheme = farmerSchemeRepo.findById(applicationId)
+                .orElseThrow(() -> new RuntimeException("Scheme Id not found"));
+
+        if (farmerScheme.getStatus() == status) {
+            return "Application is already in " + status;
+        }
+
+        farmerScheme.setStatus(status);
+        farmerScheme.setComments(comments);
+        farmerSchemeRepo.save(farmerScheme);
+        return "Successfully change the status to " + status;
     }
 
 }
