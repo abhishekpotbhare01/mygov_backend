@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/women")
 public class WomenController {
@@ -25,14 +26,18 @@ public class WomenController {
 
     @PostMapping("/{userId}")
     public ResponseEntity<?> addNewWomen(@PathVariable Integer userId,
-    		@RequestParam Integer schemeId, @RequestBody WomenSchemeDto womenDto) {
+                                         @RequestParam Integer schemeId, 
+                                         @RequestBody WomenSchemeDto womenDto) {
+    	System.out.println(userId+ schemeId +"woemnedata: "+womenDto);
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(womenService.addNewWomenData(userId, schemeId, womenDto));
+            return ResponseEntity.status(HttpStatus.CREATED)
+                                 .body(womenService.addNewWomenData(userId, schemeId, womenDto));
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            // If the error is not related to resource not found, consider changing the status code
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getWomenScheme(@PathVariable Integer id) {

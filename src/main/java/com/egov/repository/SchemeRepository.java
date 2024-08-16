@@ -1,4 +1,4 @@
-package com.egov.repository;
+ package com.egov.repository;
 
 import com.egov.dto.AllSchemeDto;
 import com.egov.entity.SchemeMaster;
@@ -36,5 +36,5 @@ public interface SchemeRepository extends JpaRepository<SchemeMaster, Integer> {
             "LEFT JOIN StudentScheme studentScheme ON scheme.schemeId = studentScheme.schemeMaster.schemeId " +
             "LEFT JOIN FarmerScheme farmerScheme ON scheme.schemeId = farmerScheme.schemeMaster.schemeId " +
             "WHERE womenScheme.userId.userId = :userId OR studentScheme.user.userId = :userId OR farmerScheme.userId.userId = :userId")
-    List<AllSchemeDto> findByUid(@Param("userId") Integer uid);
+    List<AllSchemeDto> findByUid(@Param("userId") Integer userId);
    }

@@ -61,4 +61,17 @@ public class UserServiceImpl implements IUserService {
     public void delete(Integer userId) {
 
     }
+
+	@Override
+	public void resetPassword(String email, String password) {
+		User user = userRepository.findByEmail(email);
+        if (user != null) {
+            user.setPassword(password);
+            userRepository.save(user);
+        } else {
+            throw new RuntimeException("User not found");
+        }
+	}
+
+	
 }

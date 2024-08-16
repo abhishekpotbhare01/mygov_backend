@@ -67,16 +67,20 @@ public class WomenServiceImpl implements IWomenService {
 
     @Override
     public WomenSchemeDto addNewWomenData(Integer userId, Integer schemeId, WomenSchemeDto womenDto) {
-         User user=userRepository.findById(userId).orElseThrow(()->new RuntimeException("User not found with id: " +userId ));
-         SchemeMaster schemeMaster =schemeRepository.findById(schemeId).orElseThrow(()->new RuntimeException("scheme not found with id: " +schemeId ));
+        User user = userRepository.findById(userId)
+                       .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+        
+        SchemeMaster schemeMaster = schemeRepository.findById(schemeId)
+                                      .orElseThrow(() -> new RuntimeException("Scheme not found with id: " + schemeId));
 
-    	WomenScheme womenEntity = modelMapper.map(womenDto, WomenScheme.class);
-           womenEntity.setUserId(user);
-           womenEntity.setSchemeMaster(schemeMaster);
-    	WomenScheme womensaveddata = womenrepository.save(womenEntity);
-        WomenSchemeDto womendata = modelMapper.map(womensaveddata, WomenSchemeDto.class);
-        return womendata;
+        WomenScheme womenEntity = modelMapper.map(womenDto, WomenScheme.class);
+        womenEntity.setUserId(user);
+        womenEntity.setSchemeMaster(schemeMaster);
+
+        WomenScheme savedData = womenrepository.save(womenEntity);
+        return modelMapper.map(savedData, WomenSchemeDto.class);
     }
+
 
 
     @Override
@@ -84,9 +88,8 @@ public class WomenServiceImpl implements IWomenService {
 
         WomenScheme womenEntity = womenrepository.findById(id).orElseThrow(() -> new RuntimeException("WomenDto cannot be null"));
 
-        Optional<WomenScheme> womenentity = womenrepository.findById(id);
 
-        WomenSchemeDto womendata = modelMapper.map(womenentity, WomenSchemeDto.class);
+        WomenSchemeDto womendata = modelMapper.map(womenEntity, WomenSchemeDto.class);
 
         return womendata;
 

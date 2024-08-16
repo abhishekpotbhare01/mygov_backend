@@ -8,5 +8,4 @@ import com.egov.entity.WomenScheme;
 @Repository
 public interface WomenRepository extends JpaRepository<WomenScheme,Integer>{
 
-
 }

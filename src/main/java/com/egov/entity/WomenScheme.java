@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import com.egov.entity.MaritialStatus;
 import java.time.LocalDate;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,11 +20,12 @@ public class WomenScheme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-   // private String firstName;
-    //private String lastName;
+    private String firstName;
+    private String lastName;
     //private LocalDate DOB;
     private Long phoneNumber;
-    private MaritialStatus maritialStatus;
+    @Enumerated(EnumType.STRING)
+    private com.egov.entity.MaritialStatus maritialStatus;
     private long annualIncome;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "scheme_id")

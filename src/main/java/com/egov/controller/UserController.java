@@ -1,6 +1,7 @@
 package com.egov.controller;
 
 
+import com.egov.dto.ResetPasswordDto;
 import com.egov.dto.UserDto;
 import com.egov.dto.UserLoginDto;
 import com.egov.service.IUserService;
@@ -29,6 +30,16 @@ public class UserController {
 
         UserDto registerUser = userService.loginUser(userLoginDto);
         return new ResponseEntity<>(registerUser, HttpStatus.OK);
+    }
+    
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordDto request) {
+        try {
+            userService.resetPassword(request.getEmail(), request.getPassword());
+            return ResponseEntity.ok("Password reset successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error resetting password. Please try again.");
+        }
     }
 
 }
