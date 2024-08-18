@@ -2,6 +2,8 @@ package com.egov.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.egov.entity.Address;
@@ -35,9 +37,13 @@ public class WomenSchemeDto {
     private Long phoneNumber;
     private MaritialStatus maritialStatus;
     private long annualIncome;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private SchemeMaster schemeMaster;
     private Address address;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private User userId;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDate applicationDate;    
     private Status status = Status.PENDING;
+    private String comments;
 }

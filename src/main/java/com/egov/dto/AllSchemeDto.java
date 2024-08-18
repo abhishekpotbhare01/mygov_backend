@@ -20,6 +20,5 @@ public class AllSchemeDto {
     private StudentScheme studentScheme;
     private FarmerScheme farmerScheme;
     private WomenScheme womenScheme;
-
 }
 

@@ -36,4 +36,12 @@ public class FarmerScheme {
     private String comments;
     @CreatedDate
     private LocalDate applicationDate;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bank_details_id")
+    private BankDetails bankDetails;
+
+    @PrePersist
+    protected void onCreate() {
+        this.applicationDate = LocalDate.now();
+    }
 }

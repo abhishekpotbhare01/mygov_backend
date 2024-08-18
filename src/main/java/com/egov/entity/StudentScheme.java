@@ -36,4 +36,5 @@ public class StudentScheme {
     private User user;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
+    private String comments;
 }

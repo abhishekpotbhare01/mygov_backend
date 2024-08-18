@@ -1,6 +1,7 @@
 package com.egov.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 public class SchemeMaster {
     @Id
     @Column(unique = true)
@@ -35,22 +36,23 @@ public class SchemeMaster {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SchemeConst schemeConst;
+    private int approvalCount;
+    private int pendingCount;
 
-
-    public SchemeMaster(Integer schemeId, String schemeName, String schemeDescription, LocalDate launchDate,
-                        AgeCatagory age, Category category, String eligibilityCriteria, String docRequired, String imageUrl,
-                        String formPath) {
-        this.schemeId = schemeId;
-        this.schemeName = schemeName;
-        this.schemeDescription = schemeDescription;
-        this.launchDate = launchDate;
-        this.age = age;
-        this.category = category;
-        this.eligibilityCriteria = eligibilityCriteria;
-        this.docRequired = docRequired;
-        this.imageUrl = imageUrl;
-        this.formPath = formPath;
-    }
+//    public SchemeMaster(Integer schemeId, String schemeName, String schemeDescription, LocalDate launchDate,
+//                        AgeCatagory age, Category category, String eligibilityCriteria, String docRequired, String imageUrl,
+//                        String formPath) {
+//        this.schemeId = schemeId;
+//        this.schemeName = schemeName;
+//        this.schemeDescription = schemeDescription;
+//        this.launchDate = launchDate;
+//        this.age = age;
+//        this.category = category;
+//        this.eligibilityCriteria = eligibilityCriteria;
+//        this.docRequired = docRequired;
+//        this.imageUrl = imageUrl;
+//        this.formPath = formPath;
+//    }
 
 
     @Override

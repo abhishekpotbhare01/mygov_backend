@@ -21,6 +21,12 @@ public class AdminServiceImpl implements IAdminService {
     @Autowired
     private IFarmerSchemeService farmerSchemeService;
 
+    @Autowired
+    private IStudentSchemeService studentSchemeService;
+
+    @Autowired
+    private IWomenService womenService;
+
     @Override
     public List<AllSchemeDto> getAllByStatus(Integer schemeId, Status status) {
 
@@ -33,25 +39,24 @@ public class AdminServiceImpl implements IAdminService {
 
         String message = " Unable to update status of application : " + approvalPayLoad.getApplicationId();
 
-        switch (approvalPayLoad.getSchemeConst()) {
-
-            case PM_KISAN:
-
-                message = farmerSchemeService.updateStatus(approvalPayLoad.getApplicationId(), approvalPayLoad.getStatus(),
-                        approvalPayLoad.getComments());
-
-                break;
-
-            case LADLI:
-
-                break;
-
-            case VIDYA_LAXMI:
-
-                break;
+        try {
+            switch (approvalPayLoad.getSchemeConst()) {
+                case PM_KISAN:
+                    message = farmerSchemeService.updateStatus(approvalPayLoad.getApplicationId(), approvalPayLoad.getStatus(),
+                            approvalPayLoad.getComments());
+                    break;
+                case LADLI:
+                    womenService.updateStatus(approvalPayLoad.getApplicationId(), approvalPayLoad.getStatus(),
+                            approvalPayLoad.getComments());
+                    break;
+                case VIDYA_LAXMI:
+                    studentSchemeService.updateStatus(approvalPayLoad.getApplicationId(), approvalPayLoad.getStatus(),
+                            approvalPayLoad.getComments());
+                    break;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-
-
         return message;
     }
 }

@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @PostMapping("/")
+    @PostMapping("/register")
     public ResponseEntity<?> addUser(@RequestBody UserDto userDto) {
 
         UserDto registerUser = userService.registerUser(userDto);

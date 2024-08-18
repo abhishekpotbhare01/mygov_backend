@@ -28,7 +28,9 @@ public class StudentSchemeDto {
     private AddressDto address;
 	@JsonProperty(access = Access.READ_ONLY)
     private UserDto user;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private LocalDate applicationDate;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
+    private String comments;
 }

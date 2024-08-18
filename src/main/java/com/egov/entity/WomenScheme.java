@@ -20,9 +20,6 @@ public class WomenScheme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-   // private String firstName;
-    //private String lastName;
-    //private LocalDate DOB;
     private Long phoneNumber;
     private MaritialStatus maritialStatus;
     private long annualIncome;
@@ -39,5 +36,5 @@ public class WomenScheme {
     private LocalDate applicationDate;
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
-
+    private String comments;
 }

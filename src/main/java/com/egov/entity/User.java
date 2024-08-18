@@ -2,6 +2,7 @@ package com.egov.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class User {
 	
     @Id
@@ -22,7 +24,8 @@ public class User {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    @Builder.Default
+    private Role role=Role.ROLE_USER;
 
 
 

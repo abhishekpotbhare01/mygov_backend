@@ -34,4 +34,8 @@ public class SchemeMasterDto {
     private String formPath;
     @Enumerated(EnumType.STRING)
     private SchemeConst schemeConst;
+    @JsonProperty(access = Access.READ_ONLY)
+    private int approvalCount = 0;
+    @JsonProperty(access = Access.READ_ONLY)
+    private int pendingCount = 0;
 }

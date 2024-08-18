@@ -20,12 +20,9 @@ public class AdminController {
     @Autowired
     private IAdminService adminService;
 
-
     @PostMapping("/approval")
     public ResponseEntity<?> approval(@RequestBody ApprovalPayLoad approvalPayLoad) {
-
         String message = adminService.approveOrRejectApplication(approvalPayLoad);
-
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
@@ -33,11 +30,7 @@ public class AdminController {
     public ResponseEntity<?> getStatus(@PathVariable("schemeId") Integer schemeId,
                                        @RequestParam(value = "status", defaultValue = "PENDING") Status status
     ) {
-
         List<AllSchemeDto> res = adminService.getAllByStatus(schemeId, status);
-
         return ResponseEntity.ok(res);
-
     }
-
 }

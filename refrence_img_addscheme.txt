@@ -186,8 +186,6 @@ update scheme_master set image_url="https://github.com/101amolkadam/mygov_images
 update scheme_master set form_path="sudent-scheme-form" where scheme_id=3;
 
 
-
-
 update scheme_master set image_url="https://github.com/101amolkadam/mygov_images/blob/main/assets/gov/img/pm_kisan.png?raw=true" where scheme_id=2;
 
 update scheme_master set form_path="farmer-scheme-form" where scheme_id=2;

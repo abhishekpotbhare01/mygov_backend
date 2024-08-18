@@ -34,7 +34,7 @@ public class Jwtutils {
 
         String token = Jwts.builder()
                 .setSubject(username)
-                .claim("roles", roles)  // Adding roles as a claim
+                .claim("roles", roles)
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
                 .signWith(key())

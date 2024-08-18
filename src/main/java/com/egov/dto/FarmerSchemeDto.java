@@ -1,9 +1,6 @@
 package com.egov.dto;
 
-import com.egov.entity.Address;
-import com.egov.entity.SchemeMaster;
-import com.egov.entity.Status;
-import com.egov.entity.User;
+import com.egov.entity.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -24,6 +21,7 @@ public class FarmerSchemeDto {
     private Integer farmerSchemeId;
     private String landDetails;
     private double income;
+    private Integer landArea;
     private SchemeMaster schemeMaster;
     private Address address;
     private User userId;
@@ -31,4 +29,5 @@ public class FarmerSchemeDto {
     private Status status = Status.PENDING;
     private String comments;
     private LocalDate applicationDate;
+    private BankDetails bankDetails;
 }
