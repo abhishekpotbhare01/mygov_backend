@@ -101,7 +101,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void resetPassword(String email, String password) {
-		User user = userRepository.findByEmail(email);
+		User user = userRepository.findByEmail(email).get();
         if (user != null) {
             user.setPassword(password);
             userRepository.save(user);
