@@ -31,8 +31,8 @@ import lombok.Setter;
 @Getter
 public class WomenSchemeDto {
 
-	//private String firstName;
-    //private String lastName;
+	private String firstName;
+    private String lastName;
     //private LocalDate DOB;
     private Long phoneNumber;
     private MaritialStatus maritialStatus;

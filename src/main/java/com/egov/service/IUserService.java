@@ -17,5 +17,6 @@ public interface IUserService {
 
     void delete(Integer userId);
 
+	void resetPassword(String email, String password);
 
 }
